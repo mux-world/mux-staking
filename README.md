@@ -1,17 +1,16 @@
 # mux-staking
 
+Mux Staking is a set of protocols for distributing trading fees and third-party dex farming profits to liquidity provider and MCB holders.
 
-## Overview 
+## Compile
 
-User => RewardRouter 
-             \_ stake MLP => FeeRewardTracker (ERC20) => MuxRewardTracker (ERC20) 
-             \_ stake MUX => VotingEscrow (ERC20: VEMUX)
-                                    \_ FeeMuxRewardTracker
-                                    \_ MuxMuxRewardTracker
-             \_ vest ESMUX [ESMUX => MUX]
-                        \_ MLP Vester
-                        \_ MUX Vester
+```
+npx hardhat compile
+```
 
-Admin => RewardManager         
-             \_ FeeDistributor     
-             \_ MuxDistributor
+## Run test cases
+
+```
+npx hardhat test
+```
+
