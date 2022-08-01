@@ -10,14 +10,12 @@ export enum OrderType {
   Position,
   Liquidity,
   Withdrawal,
-  Rebalance,
 }
 
 export enum PositionOrderFlags {
-  OpenPosition = 0x80, // 0x80 means openPosition; otherwise closePosition
-  MarketOrder = 0x40, // 0x40 means ignore limitPrice
-  WithdrawAllIfEmpty = 0x20, // 0x20 means auto withdraw all collateral if position.size == 0
-  TriggerOrder = 0x10, // 0x10 means this is a trigger order (ex: stop-loss order). 0 means this is a limit order (ex: take-profit order)
+  OpenPosition = 0x80, // use this flag for openPosition, otherwise closePosition
+  MarketOrder = 0x40, // ignore limitPrice
+  WithdrawAllIfEmpty = 0x20, // auto withdraw all collateral if position.size == 0
 }
 
 export enum ReferenceOracleType {
@@ -87,20 +85,11 @@ export function sleep(ms: number) {
 
 export async function ensureFinished(transaction: Promise<Contract> | Promise<ContractTransaction>): Promise<TransactionReceipt | ContractReceipt> {
   const result: Contract | ContractTransaction = await transaction
-  let receipt: TransactionReceipt | ContractReceipt
   if ((result as Contract).deployTransaction) {
-    receipt = await (result as Contract).deployTransaction.wait()
+    return await (result as Contract).deployTransaction.wait()
   } else {
-    receipt = await result.wait()
+    return await result.wait()
   }
-  if (receipt.status !== 1) {
-    throw new Error(`receipt err: ${receipt.transactionHash}`)
-  }
-  return receipt
-}
-
-export function hashString(x: string): Buffer {
-  return hash(ethers.utils.toUtf8Bytes(x))
 }
 
 export function hash(x: BytesLike): Buffer {
