@@ -1,0 +1,19 @@
+{
+  "WETH9": {
+    "type": "preset",
+    "name": "WETH9",
+    "address": "0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681"
+  },
+  "Curve2PoolFarm": {
+    "type": "plain",
+    "name": "Curve2PoolFarm",
+    "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+    "deployedAt": 16374332
+  },
+  "Curve3PoolFarm": {
+    "type": "plain",
+    "name": "Curve3PoolFarm",
+    "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+    "deployedAt": 16343232
+  }
+}
