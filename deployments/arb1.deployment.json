@@ -74,7 +74,7 @@
     "address": "0x6256dc556EE340952b8d8778f22608fd45592859",
     "dependencies": {
       "admin": "0xE52d9a3CBA458832A65cfa9FC8a74bacAbdeB32A",
-      "implementation": "0xdC500D973F9b2456c4015Ff74B4bF0d537b4b002"
+      "implementation": "0x6f3fAe2fFe0b33e54daa5FD23BA0554D4582d5A2"
     },
     "deployedAt": 19083633
   },

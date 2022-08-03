@@ -67,11 +67,12 @@ contract FeeDistributor is ReentrancyGuardUpgradeable, OwnableUpgradeable, IRewa
         _setMlpRewardProportion(_proportion);
     }
 
-    function notifyReward(uint256 amount) external onlyOwner nonReentrant {
+    function notifyReward(uint256 amount) external nonReentrant {
         require(amount > 0, "amount is zero");
 
         distribute();
         IERC20Upgradeable(rewardToken).safeTransferFrom(msg.sender, address(this), amount);
+
         uint256 _now = _blockTime();
         if (_now > epochEndTime) {
             // if epoch ended, reset epoch time
